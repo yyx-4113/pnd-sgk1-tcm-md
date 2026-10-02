@@ -24,4 +24,4 @@ Email: 960856791@qq.com
 
 ---
 
-*Data availability statement (to appear in the manuscript):* The docking and MD input files, trajectory metadata, and analysis scripts are deposited in a version-controlled repository (https://github.com/yyx-4113/pnd-sgk1-tcm-md, tag v1.0.0; repository and MANIFEST checksum to be created and the tag pushed before submission) with a MANIFEST checksum. The MM-PBSA and trajectory outputs (T_md_final_7_2026-10-02.csv, T_mmpbsa_summary.csv, per-system xvg files) are included. Data are publicly available, not "on request."
+*Data availability statement (to appear in the manuscript):* The docking and MD input files, trajectory metadata, and analysis scripts are deposited in a version-controlled repository (https://github.com/yyx-4113/pnd-sgk1-tcm-md, tag v1.0.0; repository and MANIFEST checksum created, tag pushed 2026-10-02) with a MANIFEST checksum. The MM-PBSA and trajectory outputs (T_md_final_7_2026-10-02.csv, T_mmpbsa_summary.csv, per-system xvg files) are included. Data are publicly available, not "on request."
