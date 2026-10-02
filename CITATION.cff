@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: >-
+  SGK1 as a computational target for perioperative neurocognitive disorders:
+  in silico traditional Chinese medicine screening and 100 ns molecular
+  dynamics validation — reproducibility package
+message: >-
+  If you use this software or dataset, please cite the accompanying manuscript
+  and this repository.
+type: software
+authors:
+  - given-names: Yongxin
+    family-names: Yang
+    orcid: "https://orcid.org/0009-0004-9698-6552"
+repository-code: "https://github.com/yyx-4113/pnd-sgk1-tcm-md"
+url: "https://github.com/yyx-4113/pnd-sgk1-tcm-md"
+license: MIT
+version: 1.0.0
+date-released: 2026-10-02
+keywords:
+  - perioperative neurocognitive disorder
+  - SGK1
+  - molecular dynamics
+  - MM-PBSA
+  - traditional Chinese medicine
+  - virtual screening
+  - 7PUE
