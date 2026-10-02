@@ -49,7 +49,7 @@ pnd-sgk1-tcm-md/
 │           ├── lig_dist.xvg         # ligand–protein minimal heavy-atom distance (STAY-IN-POCKET evidence)
 │           ├── lig_rmsd.xvg         # independent-fit ligand RMSD (conformational drift)
 │           ├── rmsd.xvg             # full-complex backbone RMSD (ARTIFACT for rebuilt 4-chain receptor — not a stability metric)
-│           ├── rg.xvg               # radius of gyration (convergence)
+│           ├── rg.xvg               # radius of gyration (ARTIFACT for rebuilt 4-chain receptor — deposited for transparency, NOT a stability metric)
 │           ├── rmsf.xvg             # per-residue RMSF (elevated by rebuilt-receptor chain ends — not a stability metric alone)
 │           ├── rgyrate.xvg          # (present for 5/7 systems) gmx gyrate alternative output
 │           ├── hbond.xvg            # (present for 6/7 systems) protein H-bond count
@@ -158,8 +158,10 @@ from the deposited text artifacts (`.xvg`, `.dat`, `.csv`, `md.log`).
 1. Purely computational; no experimental validation of SGK1 inhibition or binding.
 2. Receptor is rebuilt from 7PUE, not the raw crystal.
 3. Single-trajectory MM-PBSA without entropy correction → qualitative ΔG.
-4. Full-complex backbone RMSD and per-residue RMSF contain a systematic alignment artifact from the
-   rebuilt four-chain receptor; stability is judged from Rg drift + ligand–protein min distance instead.
+4. Full-complex backbone RMSD, per-residue RMSF, and radius of gyration (Rg) all contain a systematic
+   artifact from the rebuilt four-chain receptor (the separated chains drift apart during the run,
+   inflating Rg and backbone RMSD by tens of percent). Stability is judged from the ligand–protein
+   minimal distance only; Rg is excluded as a stability metric.
 5. Upstream bioinformatics that nominated SGK1 was limited by pseudoreplication and an absent human
    epigenomic signal; SGK1 remains a hypothesis to be tested experimentally.
 
