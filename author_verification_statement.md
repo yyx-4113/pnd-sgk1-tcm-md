@@ -10,7 +10,7 @@ I, the sole author, confirm the following before submission:
 1. **Every numerical result in the manuscript is traceable to a file in this repository.**
    - Table 1 (Rg drift, ligand–protein min distance, stay-in-pocket, independent-fit ligand RMSD)
      derives from `analysis/trajectories/<CID>/rg.xvg`, `lig_dist.xvg`, `lig_rmsd.xvg`, and the
-     consolidated `analysis/T_md_final_7_2026-10-02.csv`.
+     consolidated `results/T_md_final_7_2026-10-05.csv`.
    - Table 2 (MM-PBSA ΔG~GB~ / ΔG~PB~) derives from `analysis/T_mmpbsa_summary.csv` and
      `analysis/trajectories/<CID>/FINAL_RESULTS_MMPBSA.dat`.
    - All seven `md.log` files report `Finished mdrun`, confirming 100 ns completion.

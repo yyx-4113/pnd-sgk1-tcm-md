@@ -42,7 +42,7 @@ pnd-sgk1-tcm-md/
 │   ├── compute_missing_traj.py     # mdtraj re-computation of rg / independent-fit ligand RMSD / ligand–protein min distance
 │   └── compute_convergence.py      # mdtraj re-computation of Rg + RMSF convergence
 ├── analysis/
-│   ├── T_md_final_7_2026-10-02.csv  # master per-system MD summary (Table 1 source)
+│   ├── ../results/T_md_final_7_2026-10-05.csv  # master per-system MD summary (Table 1 source)
 │   ├── T_mmpbsa_summary.csv         # MM-PBSA ΔG GB/PB per system (Table 2 source)
 │   └── trajectories/
 │       └── <CID>/                   # 7 systems; each contains:
