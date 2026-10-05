@@ -1,0 +1,8 @@
+cid,name,category,complex_rmsd_nm,lig_rmsd_indepfit_nm,lig_rmsd_indepfit_sd,lig_dist_min_nm,lig_dist_max_nm,dg_gb_kcal_mol,dg_gb_sd,dg_pb_kcal_mol,dg_pb_sd,retain_close_contact
+5280445,Luteolin,herbal_candidate,3.651,0.947,1.436,0.1434,0.2732,-33.28,17.13,-27.64,13.98,yes
+5280863,Kaempferol,herbal_candidate,3.208,0.475,0.980,0.1461,0.3116,-23.94,7.37,-19.48,6.94,yes
+5281708,Daidzein,herbal_candidate,3.629,1.134,1.495,0.1485,0.2813,-22.12,13.67,-17.71,10.70,yes
+439246,Naringenin,herbal_candidate,4.041,0.866,1.370,0.1461,0.3131,-21.12,11.14,-16.98,9.27,yes
+445154,Resveratrol,herbal_candidate,2.860,0.391,0.829,0.1440,0.2862,-32.49,7.25,-25.03,6.51,yes
+164676,Tanshinone IIA,herbal_candidate,3.561,0.643,1.193,0.2103,0.3109,-27.06,4.53,-19.42,4.01,yes
+25022668,GSK650394,positive_control,3.605,1.301,1.522,0.1743,0.3043,-38.21,14.59,-28.62,10.43,yes
