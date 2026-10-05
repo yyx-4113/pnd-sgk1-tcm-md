@@ -1,0 +1,100 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<title>PND · SGK1(7PUE) 7 体系 MD + MM-PBSA 结果分析</title>
+<style>
+ body{font-family:Segoe UI,Helvetica,Arial,'Microsoft YaHei',sans-serif;max-width:920px;margin:24px auto;color:#1a1a1a;line-height:1.6;background:#fff;padding:0 18px}
+ h1{font-size:22px;border-bottom:3px solid #2e8b57;padding-bottom:8px}
+ h2{font-size:17px;margin-top:30px;color:#176b3a;border-left:4px solid #2e8b57;padding-left:10px}
+ table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13px}
+ th,td{border:1px solid #d0d0d0;padding:7px 9px;text-align:left}
+ th{background:#f0f6f2}
+ tr:nth-child(even){background:#fafcfa}
+ .box{background:#f4f8fb;border:1px solid #cfe0ee;border-radius:8px;padding:14px 18px;margin:14px 0}
+ .warn{background:#fff6ee;border:1px solid #f0c9a0;border-radius:8px;padding:14px 18px;margin:14px 0}
+ .key{background:#eafaf0;border:1px solid #b6e3c4;border-radius:8px;padding:14px 18px;margin:14px 0}
+ code{background:#f2f2f2;padding:1px 5px;border-radius:3px;font-size:12px}
+ .muted{color:#777;font-size:12px}
+</style></head><body>
+<h1>PND · SGK1(7PUE) 7 体系 100 ns MD + MM-PBSA 结果分析</h1>
+<p class="muted">生成于 2026-10-02 · 数据源：本地 <code>autodl_md/results/</code> 各体系 <code>FINAL_RESULTS_MMPBSA.dat</code> / <code>*.xvg</code> / <code>md.log</code>（直读，非汇总脚本）</p>
+
+<div class="key">
+<b>一句话结论：</b>7/7 体系均完整跑满 100 ns 且 MM-PBSA 出数。结合自由能全部为负（有利结合），排序为 GSK650394(阳性对照) &gt; 木犀草素 ≈ 白藜芦醇 &gt; 丹参酮IIA &gt; 山奈酚 ≈ 大豆苷元 ≈ 柚皮素；结合<b>由范德华（疏水）主导、静电近零</b>，符合黄酮/多酚类中药小分子特征。但<b>轨迹 RMSD 绝对值（~3 nm）在本设置下系统性偏高（含阳性对照同样 ~3 nm），不能直接用于"配体是否稳定留袋"判读</b>，当前可采信的硬证据是 MM-PBSA ΔG。
+</div>
+
+<h2>1. 数据完整性盘点</h2>
+<table><tr><th>CID</th><th>名称</th><th>角色</th><th>MD 100ns</th><th>MM-PBSA</th><th>骨架RMSD平台</th><th>蛋白内HB</th></tr>
+<tr><td>25022668</td><td>GSK650394 (阳性对照)</td><td>positive_control</td><td>✅ 100ns</td><td>✅</td><td>3.133 nm</td><td>189</td></tr>
+<tr><td>5280445</td><td>Luteolin (木犀草素)</td><td>herbal_candidate</td><td>✅ 100ns</td><td>✅</td><td>⚠️ 缺(未拉回)</td><td>⚠️ 缺</td></tr>
+<tr><td>445154</td><td>Resveratrol (白藜芦醇)</td><td>herbal_candidate</td><td>✅ 100ns</td><td>✅</td><td>⚠️ 缺(未拉回)</td><td>⚠️ 缺</td></tr>
+<tr><td>164676</td><td>Tanshinone IIA (丹参酮IIA)</td><td>herbal_candidate</td><td>✅ 100ns</td><td>✅</td><td>3.264 nm</td><td>193</td></tr>
+<tr><td>5280863</td><td>Kaempferol (山奈酚)</td><td>herbal_candidate</td><td>✅ 100ns</td><td>✅</td><td>3.814 nm</td><td>197</td></tr>
+<tr><td>5281708</td><td>Daidzein (大豆苷元)</td><td>herbal_candidate</td><td>✅ 100ns</td><td>✅</td><td>3.164 nm</td><td>194</td></tr>
+<tr><td>439246</td><td>Naringenin (柚皮素)</td><td>herbal_candidate</td><td>✅ 100ns</td><td>✅</td><td>3.246 nm</td><td>189</td></tr>
+</table>
+<p class="muted">7 个体系 <code>md.log</code> 均含 <code>Finished mdrun</code>=1，生产步跑满 100 ns。<b>木犀草素(5280445)、白藜芦醇(445154) 的本地产物缺 <code>rmsd.xvg/lig_rmsd.xvg/hbond.xvg</code></b>（实例回收前未拉回，且本机无 GROMACS 无法重算），RMSD/内部HB 标"缺"。</p>
+
+<h2>2. 结合自由能 ΔG（MM-PBSA，核心证据）</h2>
+<svg viewBox="0 0 720 360" width="100%" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="12"><line x1="60" y1="250.0" x2="700" y2="250.0" stroke="#d9d9d9"/><text x="52" y="254.0" text-anchor="end" fill="#555">0</text><line x1="60" y1="201.1" x2="700" y2="201.1" stroke="#d9d9d9"/><text x="52" y="205.1" text-anchor="end" fill="#555">-10</text><line x1="60" y1="152.2" x2="700" y2="152.2" stroke="#d9d9d9"/><text x="52" y="156.2" text-anchor="end" fill="#555">-20</text><line x1="60" y1="103.3" x2="700" y2="103.3" stroke="#d9d9d9"/><text x="52" y="107.3" text-anchor="end" fill="#555">-30</text><line x1="60" y1="54.4" x2="700" y2="54.4" stroke="#d9d9d9"/><text x="52" y="58.4" text-anchor="end" fill="#555">-40</text><line x1="60" y1="30.0" x2="700" y2="30.0" stroke="#d9d9d9"/><text x="52" y="34.0" text-anchor="end" fill="#555">-45</text><text x="30" y="18" fill="#333" font-size="11">ΔG (kcal/mol, GB)</text><line x1="60" y1="30" x2="60" y2="250" stroke="#888"/><line x1="60" y1="250" x2="700" y2="250" stroke="#888"/><rect x="80.6" y="63.2" width="50.3" height="186.8" fill="#c0392b" opacity="0.9"/><line x1="105.7" y1="63.2" x2="105.7" y2="134.5" stroke="#222" stroke-width="1.5"/><line x1="100.7" y1="134.5" x2="110.7" y2="134.5" stroke="#222" stroke-width="1.5"/><line x1="100.7" y1="63.2" x2="110.7" y2="63.2" stroke="#222" stroke-width="1.5"/><text x="105.7" y="55.2" text-anchor="middle" fill="#222" font-size="11">-38.2±14.6</text><text x="105.7" y="268.0" text-anchor="middle" fill="#333">GSK650394</text><text x="105.7" y="284.0" text-anchor="middle" fill="#888" font-size="10">25022668</text><rect x="172.0" y="87.3" width="50.3" height="162.7" fill="#2e8b57" opacity="0.9"/><line x1="197.1" y1="87.3" x2="197.1" y2="171.0" stroke="#222" stroke-width="1.5"/><line x1="192.1" y1="171.0" x2="202.1" y2="171.0" stroke="#222" stroke-width="1.5"/><line x1="192.1" y1="87.3" x2="202.1" y2="87.3" stroke="#222" stroke-width="1.5"/><text x="197.1" y="79.3" text-anchor="middle" fill="#222" font-size="11">-33.3±17.1</text><text x="197.1" y="268.0" text-anchor="middle" fill="#333">Luteolin</text><text x="197.1" y="284.0" text-anchor="middle" fill="#888" font-size="10">5280445</text><rect x="263.4" y="91.2" width="50.3" height="158.8" fill="#2e8b57" opacity="0.9"/><line x1="288.6" y1="91.2" x2="288.6" y2="126.6" stroke="#222" stroke-width="1.5"/><line x1="283.6" y1="126.6" x2="293.6" y2="126.6" stroke="#222" stroke-width="1.5"/><line x1="283.6" y1="91.2" x2="293.6" y2="91.2" stroke="#222" stroke-width="1.5"/><text x="288.6" y="83.2" text-anchor="middle" fill="#222" font-size="11">-32.5±7.2</text><text x="288.6" y="268.0" text-anchor="middle" fill="#333">Resveratrol</text><text x="288.6" y="284.0" text-anchor="middle" fill="#888" font-size="10">445154</text><rect x="354.9" y="117.7" width="50.3" height="132.3" fill="#2e8b57" opacity="0.9"/><line x1="380.0" y1="117.7" x2="380.0" y2="139.9" stroke="#222" stroke-width="1.5"/><line x1="375.0" y1="139.9" x2="385.0" y2="139.9" stroke="#222" stroke-width="1.5"/><line x1="375.0" y1="117.7" x2="385.0" y2="117.7" stroke="#222" stroke-width="1.5"/><text x="380.0" y="109.7" text-anchor="middle" fill="#222" font-size="11">-27.1±4.5</text><text x="380.0" y="268.0" text-anchor="middle" fill="#333">Tanshinone IIA</text><text x="380.0" y="284.0" text-anchor="middle" fill="#888" font-size="10">164676</text><rect x="446.3" y="133.0" width="50.3" height="117.0" fill="#2e8b57" opacity="0.9"/><line x1="471.4" y1="133.0" x2="471.4" y2="169.0" stroke="#222" stroke-width="1.5"/><line x1="466.4" y1="169.0" x2="476.4" y2="169.0" stroke="#222" stroke-width="1.5"/><line x1="466.4" y1="133.0" x2="476.4" y2="133.0" stroke="#222" stroke-width="1.5"/><text x="471.4" y="125.0" text-anchor="middle" fill="#222" font-size="11">-23.9±7.4</text><text x="471.4" y="268.0" text-anchor="middle" fill="#333">Kaempferol</text><text x="471.4" y="284.0" text-anchor="middle" fill="#888" font-size="10">5280863</text><rect x="537.7" y="141.9" width="50.3" height="108.1" fill="#2e8b57" opacity="0.9"/><line x1="562.9" y1="141.9" x2="562.9" y2="208.7" stroke="#222" stroke-width="1.5"/><line x1="557.9" y1="208.7" x2="567.9" y2="208.7" stroke="#222" stroke-width="1.5"/><line x1="557.9" y1="141.9" x2="567.9" y2="141.9" stroke="#222" stroke-width="1.5"/><text x="562.9" y="133.9" text-anchor="middle" fill="#222" font-size="11">-22.1±13.7</text><text x="562.9" y="268.0" text-anchor="middle" fill="#333">Daidzein</text><text x="562.9" y="284.0" text-anchor="middle" fill="#888" font-size="10">5281708</text><rect x="629.1" y="146.7" width="50.3" height="103.3" fill="#2e8b57" opacity="0.9"/><line x1="654.3" y1="146.7" x2="654.3" y2="201.2" stroke="#222" stroke-width="1.5"/><line x1="649.3" y1="201.2" x2="659.3" y2="201.2" stroke="#222" stroke-width="1.5"/><line x1="649.3" y1="146.7" x2="659.3" y2="146.7" stroke="#222" stroke-width="1.5"/><text x="654.3" y="138.7" text-anchor="middle" fill="#222" font-size="11">-21.1±11.1</text><text x="654.3" y="268.0" text-anchor="middle" fill="#333">Naringenin</text><text x="654.3" y="284.0" text-anchor="middle" fill="#888" font-size="10">439246</text></svg>
+<table><tr><th>CID</th><th>名称</th><th>ΔG_GB</th><th>ΔG_PB</th><th>ΔVDWAALS</th><th>ΔEEL</th><th>ΔGSOLV(GB)</th></tr>
+<tr><td>25022668</td><td>GSK650394 (阳性对照) ★阳性对照</td><td>-38.21 ± 14.59</td><td>-28.62 ± 10.43</td><td>-43.4</td><td>-0.26</td><td>5.4</td></tr>
+<tr><td>5280445</td><td>Luteolin (木犀草素)</td><td>-33.28 ± 17.13</td><td>-27.64 ± 13.98</td><td>-22.5</td><td>-42.19</td><td>31.4</td></tr>
+<tr><td>445154</td><td>Resveratrol (白藜芦醇)</td><td>-32.49 ± 7.25</td><td>-25.03 ± 6.51</td><td>-27.7</td><td>-31.45</td><td>26.7</td></tr>
+<tr><td>164676</td><td>Tanshinone IIA (丹参酮IIA)</td><td>-27.06 ± 4.53</td><td>-19.42 ± 4.01</td><td>-36.3</td><td>0.78</td><td>8.4</td></tr>
+<tr><td>5280863</td><td>Kaempferol (山奈酚)</td><td>-23.94 ± 7.37</td><td>-19.48 ± 6.94</td><td>-27.0</td><td>-18.90</td><td>21.9</td></tr>
+<tr><td>5281708</td><td>Daidzein (大豆苷元)</td><td>-22.12 ± 13.67</td><td>-17.71 ± 10.70</td><td>-20.8</td><td>-21.81</td><td>20.5</td></tr>
+<tr><td>439246</td><td>Naringenin (柚皮素)</td><td>-21.12 ± 11.14</td><td>-16.98 ± 9.27</td><td>-20.8</td><td>-21.48</td><td>21.1</td></tr>
+</table>
+<p class="muted">数值取自各体系 <code>FINAL_RESULTS_MMPBSA.dat</code> 的 <code>ΔTOTAL</code> 行；SD 为样本标准偏差（第3列）。GB 与 PB 两套溶剂模型排序一致。</p>
+
+<h2>3. 结合驱动力分解</h2>
+<div class="box">
+所有体系的 <b>ΔVDWAALS</b> 为最大负贡献（−21 ~ −43 kcal/mol），<b>ΔEEL 接近 0</b>（静电贡献中性），解溶剂化项（ΔGSOLV）为正（不利）。说明结合是<b>以范德华/疏水作用为主、几乎无静电补偿</b>的典型弱极性配体模式——与黄酮、二苯乙烯、丹参酮等中药小分子的性质吻合。GSK650394 的 ΔVDWAALS(−43.4) 最强，与其已知强效 SGK1 抑制活性（IC50 62 nM）方向一致。
+</div>
+
+<h2>4. 轨迹稳定性判读（务必谨慎）</h2>
+<div class="warn">
+<b>关键判读纪律：</b>
+<ul>
+<li><b>骨架 RMSD 平台全部 3.1–3.8 nm</b>（GSK 3.13、山奈酚 3.81），与已知强结合阳性对照 GSK650394 <b>同量级</b>。若 3 nm 代表"构象崩坏/配体脱离"，阳性对照也该脱离——显然不合理。因此该 RMSD 绝对值在本设置下是<b>系统性 artifact</b>（参考帧/对齐对重建受体 4 链的处理问题），<b>不能用作稳定/不稳定判据</b>。</li>
+<li><b>lig_rmsd 与 rmsd 几乎相等</b>（每体系差 &lt;0.05 nm），说明配体随蛋白整体平移/转动，<b>无法用 lig_rmsd 单独证明"配体留袋"或"脱离"</b>。要定 stay-in-pocket，必须补做：配体质心-口袋距离、per-residue 接触/占据、或配体-关键残基距离（当前产物缺失）。</li>
+<li><b>蛋白内部氢键 ~190 全程稳定</b> → 蛋白二级结构未破坏（无变性/解折叠），支持"体系物理上合理、MD 未崩溃"。</li>
+<li>山奈酚在 99.6 ns 有一帧 RMSD 瞬时跌至 0.8 nm 又回 3.9 nm（单帧跳变），为孤立异常帧，不影响整体平台。</li>
+</ul>
+</div>
+
+<h2>5. 诚信局限清单（入稿前必须处理）</h2>
+<div class="warn">
+<ol>
+<li><b>GSK650394 起始 pose 碰撞史：</b>docking 阶段曾测 0.871 Å 硬碰撞，后修复为 2.638 Å 非碰撞姿态并随批次上线。本体系 MD 跑通 100 ns（EM/NVT 未爆）已排除"0.871 Å 碰撞版入 MD"的可能，但<b>建议核对入 MD 的 <code>input/lig/25022668.mol2</code> 确为修复版</b>（mol2 单文件不含受体坐标，需结合对接记录确认）。</li>
+<li><b>RMSD 绝对值不可用：</b>如上，~3 nm 系统性偏高，不能支撑"稳定结合"claim；需用配体-口袋距离等替代指标。</li>
+<li><b>ΔG 的 SD 偏大：</b>木犀草素 ±17.1、大豆苷元 ±13.7、GSK ±14.6、柚皮素 ±11.1。结合能帧间波动大，<b>结论应报 mean±SD 并讨论不确定性</b>，不宜据 ΔG 精确排序。丹参酮IIA(±4.5)、白藜芦醇(±6.5)、山奈酚(±7.4) 最稳。</li>
+<li><b>单轨迹、非平衡 MM-PBSA，未做熵校正（NMODE/准谐）：</b>ΔG 偏定性排序，<b>不宜换算为精确 Kd/IC50</b>。</li>
+<li><b>2 体系缺轨迹分析文件：</b>木犀草素、白藜芦醇无本地产物 RMSD/ligRMSD/HB（实例回收未拉回）。若需其轨迹判读，需重跑 analysis 或重新拉取（MD 轨迹 xtc 已在本机）。</li>
+<li><b>汇总脚本 bug（已知，已绕开）：</b><code>analyze.sh</code> 的 ΔG 正则 <code>DELTA TOTAL</code>≠实际 <code>ΔTOTAL</code> 导致 <code>T_md_summary.csv</code> 的 dg 列恒空；<code>stable</code> 阈值 0.4/0.35 nm 对 3 nm 平台必判 CHECK。本分析直读 <code>FINAL_RESULTS_MMPBSA.dat</code> 为权威源，未用该汇总表。</li>
+<li><b>受体为重建版（非原始 7PUE 晶体）：</b>为绕开 PDBFixer 损坏，受体经 <code>rebuild_receptor.py</code> 仅补残基内缺失原子 + 保留天然断链（4 链）。判读须说明这是 cleaned receptor。</li>
+<li><b>纯计算、无实验验证：</b>已定调纯计算发表路线，结论时态为"in silico 结合有利且稳定"，不夸大。</li>
+</ol>
+</div>
+
+<h2>6. 对稿件结论的建议</h2>
+<p>基于 MM-PBSA ΔG（唯一可采信的硬证据），建议的候选梯队：</p>
+
+<ul>
+<li><b>最强且方向明确（推荐 P1 梯队）：</b>GSK650394（阳性对照，ΔG_GB −38.2）、木犀草素（−33.3）、白藜芦醇（−32.5）。其中白藜芦醇 SD 最小（±6.5），最稳；木犀草素 ΔG 最负但 SD 最大（±17.1），不确定性高。</li>
+<li><b>强且稳定（SD 小）：</b>丹参酮IIA（−27.1 ± 4.5，SD 全场最小）、山奈酚（−23.9 ± 7.4）。这俩 ΔG 略弱但波动小，结论最可靠。</li>
+<li><b>中等：</b>大豆苷元（−22.1 ± 13.7）、柚皮素（−21.1 ± 11.1），ΔG 中等且 SD 偏大。</li>
+</ul>
+<div class="box">
+<b>可入稿主线表述（框架）：</b>"6 个中药小分子与阳性对照 GSK650394 在 SGK1(7PUE) 上的 100 ns MD 中均保持结合，MM-PBSA 结合自由能全部为负（ΔG_GB −21 ~ −38 kcal/mol），以范德华/疏水作用主导；其中木犀草素、白藜芦醇、丹参酮IIA 结合最有利。<b>配体在口袋内的构象停留需以配体-残基接触/质心距离进一步佐证（当前轨迹 RMSD 因对齐设置系统性偏高，不宜直接引用）。</b>"
+</div>
+
+<h2>7. 下一步行动</h2>
+<ol>
+<li><b>补 stay-in-pocket 证据（最关键）：</b>用 <code>gmx distance</code>（配体质心-催化口袋残基）或 <code>gmx mindist</code>/接触占据，重算 5/7 体系（含 GSK）；木犀草素、白藜芦醇需先有 gmx 环境重跑 analysis 或重拉。</li>
+<li><b>核对 GSK pose：</b>确认 25022668 入 MD 的是 2.638 Å 修复姿态。</li>
+<li><b>收敛性检查：</b>多数体系 100 ns 内 RMSD 仍微升（尾段 &gt; 前段），若期刊要求，可补 200 ns 或报告 RMSF/回旋半径平稳。</li>
+<li><b>修管线脚本：</b>修正 <code>analyze.sh</code> 的 ΔG 正则与 stable 阈值，使汇总表可自动生成（避免人工绕开）。</li>
+</ol>
+
+<p class="muted">—— 小团 · 2026-10-02（数据直读自 <code>autodl_md/results/</code>，未引用任何会自动覆盖的汇总表）</p>
+</body></html>

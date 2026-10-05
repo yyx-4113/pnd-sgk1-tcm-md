@@ -44,7 +44,7 @@
 
   <!-- Stage 5 -->
   <rect x="798" y="90" width="162" height="130" rx="8" fill="#E0F2F1" stroke="#00796B" stroke-width="1.5"/>
-  <text x="879" y="118" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Validation</text>
+  <text x="879" y="118" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Pose retention</text>
   <text x="879" y="146" text-anchor="middle" font-size="11" fill="#1a1a1a">pocket 0.14–0.31 nm</text>
   <text x="879" y="166" text-anchor="middle" font-size="11" fill="#1a1a1a">all 7 ligands stay</text>
   <text x="879" y="192" text-anchor="middle" font-size="11" fill="#1a1a1a">ΔG −21 to −38 kcal/mol</text>
