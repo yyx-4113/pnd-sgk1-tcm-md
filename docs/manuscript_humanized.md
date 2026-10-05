@@ -1,6 +1,6 @@
 # SGK1 as a computational target for perioperative neurocognitive disorders: in silico traditional Chinese medicine screening and 100 ns molecular dynamics validation
 
-**Yongxin Yang**^1^
+**Yongxin Yang**^1^ (ORCID: 0009-0004-9698-6552)
 
 ^1^ Department of Anesthesiology, The Second Affiliated Hospital of Fujian University of Traditional Chinese Medicine, Fuzhou, Fujian 350003, China
 
@@ -8,23 +8,33 @@
 
 ---
 
+## Highlights
+
+- SGK1/7PUE is the only dockable hub among five cross-species PND candidates
+- Seven SGK1–TCM complexes validated by 100 ns molecular dynamics
+- All ligands stayed in the ATP-binding pocket (minimal distance 0.14–0.31 nm)
+- MM-PBSA ΔG: GSK650394 strongest; TCM monomers −21 to −33 kcal/mol
+- Purely computational; rebuilt-receptor and single-trajectory limits disclosed
+
+---
+
 ## Abstract
 
-Perioperative neurocognitive disorders (PND) are common, disabling complications in older surgical patients, yet their molecular targets remain poorly defined. Using a cross-species computational strategy that combined mouse hippocampal mechanism-level evidence with human directional and epigenomic signals, we identified SGK1 as the only hub gene among five candidate drivers that has a resolved, dockable crystal structure (PDB 7PUE). We then performed an in silico screen of traditional Chinese medicine (TCM) monomers and selected six representative compounds (luteolin, resveratrol, kaempferol, daidzein, naringenin, and tanshinone IIA) plus the reference SGK1 inhibitor GSK650394 for molecular dynamics (MD) validation. All seven complexes retained their ligand in the ATP-binding pocket through 100 ns of simulation, with the ligand–protein minimal heavy-atom distance staying within 0.14–0.31 nm throughout. The rebuilt four-chain receptor makes global radius-of-gyration and full-complex backbone-RMSD metrics unreliable (the same artifact class, quantified below), so stability is judged from pocket retention rather than global fold expansion. MM-PBSA binding free energies (ΔG, GB model) ranged from −21.1 to −38.2 kcal/mol, with GSK650394 (−38.2 ± 14.6) the strongest and the six TCM monomers clustering between −21.1 and −33.3 kcal/mol. Decomposition showed van der Waals and hydrophobic terms dominated (ΔVDWAALS −21 to −43 kcal/mol; electrostatic contribution near zero), consistent with the weakly polar character of flavonoids, stilbenes, and diterpenes. We propose SGK1 as a plausible computational intervention target for PND and luteolin, resveratrol, and tanshinone IIA as priority TCM monomers for experimental follow-up. This study is a purely computational validation; the absence of experimental confirmation and the use of a rebuilt receptor structure are stated as limitations.
+Perioperative neurocognitive disorders (PND) lack molecular targets that are both mechanistically credible and tractable for small-molecule intervention. Using a cross-species computational pipeline that integrated mouse hippocampal mechanism-level evidence with human directional and epigenomic signals, we identified SGK1 as the only hub gene among five candidates with an experimentally resolved, dockable crystal structure (PDB 7PUE). We performed an in silico screen of traditional Chinese medicine monomers and selected six representative compounds (luteolin, resveratrol, kaempferol, daidzein, naringenin, tanshinone IIA) plus the reference SGK1 inhibitor GSK650394 for 100 ns molecular dynamics validation. All seven complexes retained their ligand in the ATP-binding pocket throughout the simulation, with the ligand–protein minimal heavy-atom distance staying within 0.14–0.31 nm. Because the rebuilt four-chain receptor makes global radius-of-gyration and full-complex backbone-RMSD metrics unreliable, stability is judged from pocket retention rather than global fold expansion. MM-PBSA binding free energies (ΔG, GB model) ranged from −21.1 to −38.2 kcal/mol, with GSK650394 the strongest and the six monomers clustering between −21.1 and −33.3 kcal/mol; van der Waals and hydrophobic terms dominated. We propose SGK1 as a plausible computational intervention target for PND and luteolin, resveratrol and tanshinone IIA as priority monomers for experimental follow-up. This is a purely computational study; the absence of experimental confirmation and the use of a rebuilt receptor structure are stated as limitations.
 
-**Keywords:** perioperative neurocognitive disorder; SGK1; molecular dynamics; MM-PBSA; traditional Chinese medicine; virtual screening; 7PUE
+**Keywords:** perioperative neurocognitive disorders; SGK1; molecular dynamics; MM-PBSA; traditional Chinese medicine; virtual screening; 7PUE
 
 ---
 
 ## 1. Introduction
 
-Perioperative neurocognitive disorders affect a substantial proportion of older adults after surgery and are associated with longer hospital stays, higher costs, and sustained cognitive decline.^1,2^ Despite a large epidemiological and basic-science literature, the field still lacks molecular targets that are both mechanistically credible and tractable for small-molecule intervention. Most candidate mechanisms, neuroinflammation, synaptic plasticity loss, and oxidative stress, are descriptive rather than targetable in a way that supports rational drug design.^3^
+Perioperative neurocognitive disorders affect a substantial proportion of older adults after surgery and are associated with longer hospital stays, higher costs, and sustained cognitive decline (Evered and Silbert, 2018; Berger et al., 2015). Despite a large epidemiological and basic-science literature, the field still lacks molecular targets that are both mechanistically credible and tractable for small-molecule intervention. Most candidate mechanisms — neuroinflammation, synaptic plasticity loss, and oxidative stress — are descriptive rather than targetable in a way that supports rational drug design (Cibelli et al., 2010).
 
-A rational alternative is to start from genes that are consistently implicated across species and omics layers, then ask whether any of them can be engaged by a drug-like molecule. We previously applied a cross-species integration pipeline (mouse hippocampal differential expression, weighted gene co-expression network analysis, and machine-learning target locking; human directional-consistency and DNA-methylation epigenetics) that nominated five hub genes.^4^ Of these five, four would require *de novo* AlphaFold modelling before any docking could be attempted, whereas SGK1 (serum/glucocorticoid-regulated kinase 1) has a high-quality crystal structure of its kinase domain in complex with an inhibitor (PDB 7PUE).^5^ SGK1 is biologically plausible in this context: it sits at the intersection of glucocorticoid signalling and synaptic function, both of which are perturbed in PND.^6,7^
+A rational alternative is to start from genes that are consistently implicated across species and omics layers, then ask whether any of them can be engaged by a drug-like molecule. We previously applied a cross-species integration pipeline (mouse hippocampal differential expression, weighted gene co-expression network analysis, and machine-learning target locking; human directional-consistency and DNA-methylation epigenetics) that nominated five hub genes (Yang, 2026). Of these five, four would require *de novo* AlphaFold modelling before any docking could be attempted, whereas SGK1 (serum/glucocorticoid-regulated kinase 1) has a high-quality crystal structure of its kinase domain in complex with an inhibitor (PDB 7PUE; Halland et al., 2022; Zhao et al., 2007). SGK1 is biologically plausible in this context: it sits at the intersection of glucocorticoid signalling and synaptic function, both of which are perturbed in PND (Lang et al., 2010; Kim and Diamond, 2002).
 
-Two caveats from the upstream pipeline must be stated honestly. The transcriptomic signal was inconsistent across independent mouse datasets (pseudoreplication and small sample sizes limited confidence), and the human epigenomic screen returned no FDR-significant differentially methylated locus.^4^ We therefore treat SGK1 as a *priority hypothesis* rather than a confirmed causal driver, and we sought independent computational validation through structure-based docking and molecular dynamics rather than presenting the bioinformatics as proof.
+Two caveats from the upstream pipeline must be stated honestly. The transcriptomic signal was inconsistent across independent mouse datasets (pseudoreplication and small sample sizes limited confidence), and the human epigenomic screen returned no FDR-significant differentially methylated locus. We therefore treat SGK1 as a *priority hypothesis* rather than a confirmed causal driver, and we sought independent computational validation through structure-based docking and molecular dynamics rather than presenting the bioinformatics as proof.
 
-If SGK1 is a credible target, the next question is whether bioactive TCM monomers, widely used, orally administered, and brain-accessible, can engage it. TCM monomers such as flavonoids and stilbenes have shown neuroprotective signals in preclinical PND models, but their protein targets are usually inferred, not demonstrated.^8,9^ Structure-based virtual screening offers a direct test of whether a given monomer can physically occupy the SGK1 ATP-binding pocket and remain there under thermal motion.
+If SGK1 is a credible target, the next question is whether bioactive traditional Chinese medicine (TCM) monomers, widely used, orally administered, and brain-accessible, can engage it. TCM monomers such as flavonoids and stilbenes have shown neuroprotective signals in preclinical PND-relevant models — kaempferol (Wang et al., 2020), daidzein (Zheng et al., 2022), naringenin (Zhang et al., 2022), luteolin (Li et al., 2022), tanshinone IIA (Yang et al., 2025), and resveratrol (Liu et al., 2025) — yet their protein targets are usually inferred, not demonstrated. Structure-based virtual screening offers a direct test of whether a given monomer can physically occupy the SGK1 ATP-binding pocket and remain there under thermal motion. Recent reviews frame PND as a disorder of neuroinflammation, oxidative stress, and bioactive-molecule modulation (Mao et al., 2025; Safavynia and Goldstein, 2018), which motivates repurposing neuroprotective monomers as testable ligands.
 
 Here we report (i) the selection of SGK1/7PUE as the only dockable hub, (ii) an in silico TCM screen that advanced six monomers alongside the reference inhibitor GSK650394, (iii) 100 ns MD simulation of all seven complexes, and (iv) MM-PBSA binding free energies with per-complex trajectory validation. We place particular weight on whether each ligand *stays in the pocket* under simulation, because a docking pose that drifts out within nanoseconds is not a usable hypothesis.
 
@@ -34,27 +44,27 @@ Here we report (i) the selection of SGK1/7PUE as the only dockable hub, (ii) an 
 
 ### 2.1 Target selection
 
-The five hub genes were carried over from a prior cross-species pipeline.^4^ Each was checked for an experimentally resolved structure in the Protein Data Bank. Only SGK1 had a kinase-domain structure suitable for docking (PDB 7PUE, chain A, residues 82–376). The remaining four hubs lacked experimentally resolved structures and were not pursued in the docking/MD stage.
+The five hub genes were carried over from a prior cross-species pipeline (Yang, 2026). Each was checked for an experimentally resolved structure in the Protein Data Bank. Only SGK1 had a kinase-domain structure suitable for docking (PDB 7PUE, chain A, residues 82–376; Halland et al., 2022). The remaining four hubs lacked experimentally resolved structures and were not pursued in the docking/MD stage. WGCNA was used in the upstream nomination step (Langfelder and Horvath, 2008).
 
 ### 2.2 Compound library and pre-filters
 
-TCM monomers were drawn from the TCMSP^10^ and HERB^11^ databases and curated into a 31-compound library. Compounds were pre-filtered for predicted blood–brain barrier (BBB) permeability with the BOILED-egg model^17^ (TPSA ≤ 90 Å² and 0 ≤ calculated logP ≤ 3 → CNS-positive); 7 of 31 monomers were predicted BBB-penetrant. Drug-likeness was assessed with standard Lipinski/Veber/Egan rules (RDKit). ADME metrics were used as a ranking criterion rather than a hard exclusion; all 31 monomers entered the docking stage.
+TCM monomers were drawn from the TCMSP (Ru et al., 2014) and HERB (Fang et al., 2021) databases and curated into a 31-compound library. Compounds were pre-filtered for predicted blood–brain barrier (BBB) permeability with the BOILED-egg model (Daina and Zoete, 2016) (TPSA ≤ 90 Å² and 0 ≤ calculated logP ≤ 3 → CNS-positive); 7 of 31 monomers were predicted BBB-penetrant. Drug-likeness was assessed with standard Lipinski, Veber, and Egan rules (Lipinski et al., 1997; Veber et al., 2002; Egan et al., 2000) (RDKit). ADME metrics were used as a ranking criterion rather than a hard exclusion; all 31 monomers entered the docking stage.
 
 ### 2.3 Molecular docking
 
-Docking was performed with AutoDock Vina.^12^ The receptor was the SGK1 kinase domain from PDB 7PUE; the grid box was centred on the ATP-binding cavity. A consensus docking stage (D4) was applied, after which 22 of the 31 filtered monomers passed. Six monomers spanning structural classes (flavonoids: luteolin, kaempferol, daidzein, naringenin; stilbene: resveratrol; diterpene: tanshinone IIA) were selected for MD validation. GSK650394 (PubChem CID 25022668), a known SGK1 inhibitor (IC~50~ ≈ 62 nM),^13^ was included as a positive control and docked at −11.27 kcal/mol.
+Docking was performed with AutoDock Vina (Trott and Olson, 2010). The receptor was the SGK1 kinase domain from PDB 7PUE; the grid box was centred on the ATP-binding cavity. A consensus docking stage (D4) was applied, after which 22 of the 31 filtered monomers passed. Six monomers spanning structural classes (flavonoids: luteolin, kaempferol, daidzein, naringenin; stilbene: resveratrol; diterpene: tanshinone IIA) were selected for MD validation. GSK650394 (PubChem CID 25022668), a known SGK1 inhibitor (IC~50~ ≈ 62 nM; Sherk et al., 2008), was included as a positive control and docked at −11.27 kcal/mol.
 
 ### 2.4 Molecular dynamics simulation
 
-Systems were prepared with GROMACS 2026.3 (conda-forge build)^14^. The receptor was rebuilt from 7PUE chain A using PDBFixer to add only missing intra-residue atoms while preserving the native chain breaks; the resulting four-chain structure (receptor_md.pdb, 271 residues, 2200 heavy atoms) was used for all simulations. The amber99sb-ildn all-atom force field and TIP3P water model were used. Ligands were parameterized with GAFF2 via acpype; the complex was solvated with TIP3P water, neutralized, and energy-minimized by steepest descent. Each system was equilibrated (NVT 50,000 steps, V-rescale thermostat at 300 K; NPT 500,000 steps, Berendsen barostat at 1.0 bar) and then simulated for 100 ns of production in the NPT ensemble (Parrinello–Rahman barostat at 1.0 bar). The integrator was md with a 2 fs time step (dt = 0.002 ps), PME electrostatics, and LINCS constraints on hydrogen bonds. All seven systems completed 100 ns (md.log reports "Finished mdrun" for each).
+Systems were prepared with GROMACS 2026.3 (conda-forge build) (Abraham et al., 2015). The receptor was rebuilt from 7PUE chain A using PDBFixer to add only missing intra-residue atoms while preserving the native chain breaks; the resulting four-chain structure (receptor_md.pdb, 271 residues, 2200 heavy atoms) was used for all simulations. The amber99sb-ildn all-atom force field and TIP3P water model were used. Ligands were parameterized with GAFF2 via acpype; the complex was solvated with TIP3P water, neutralized, and energy-minimized by steepest descent. Each system was equilibrated (NVT 50,000 steps, V-rescale thermostat at 300 K; NPT 500,000 steps, Berendsen barostat at 1.0 bar) and then simulated for 100 ns of production in the NPT ensemble (Parrinello–Rahman barostat at 1.0 bar). The integrator was md with a 2 fs time step (dt = 0.002 ps), PME electrostatics, and LINCS constraints on hydrogen bonds. All seven systems completed 100 ns (md.log reports "Finished mdrun" for each).
 
 ### 2.5 MM-PBSA binding free energy
 
-Binding free energies were computed with gmx_MMPBSA using both generalized-Born (GB) and Poisson–Boltzmann (PB) solvent models, averaged over 99 snapshots drawn from the production trajectory.^15^ The single-trajectory protocol was used; entropic (normal-mode/quasi-harmonic) contributions were not computed, so the reported ΔG is a qualitative binding estimate rather than a calibration of K~d~.
+Binding free energies were computed with gmx_MMPBSA using both generalized-Born (GB) and Poisson–Boltzmann (PB) solvent models, averaged over 99 snapshots drawn from the production trajectory (Valdés-Tresanco et al., 2021). The single-trajectory protocol was used; entropic (normal-mode/quasi-harmonic) contributions were not computed, so the reported ΔG is a qualitative binding estimate rather than a calibration of K~d~ (Genheden and Ryde, 2015).
 
 ### 2.6 Trajectory analysis
 
-Global conformational stability was assessed from the radius of gyration (Rg) and the full-complex backbone RMSD; both are reported as known artifacts of the rebuilt four-chain receptor (the separated chains drift apart over the run, inflating Rg and backbone RMSD by tens of percent) and are not used as stability criteria. Ligand retention was measured as the minimal heavy-atom distance between the ligand and the protein across each frame (mdtraj).^16^ Ligand conformational drift was measured by RMSD after independent fitting of the ligand alone. Stability is judged from the ligand–protein minimal distance, which is unaffected by the receptor-rebuild artifact.
+Global conformational stability was assessed from the radius of gyration (Rg) and the full-complex backbone RMSD; both are reported as known artifacts of the rebuilt four-chain receptor (the separated chains drift apart over the run, inflating Rg and backbone RMSD by tens of percent) and are not used as stability criteria. Ligand retention was measured as the minimal heavy-atom distance between the ligand and the protein across each frame (mdtraj; McGibbon et al., 2015). Ligand conformational drift was measured by RMSD after independent fitting of the ligand alone. Stability is judged from the ligand–protein minimal distance, which is unaffected by the receptor-rebuild artifact; brief MD of a docked complex followed by monitoring of ligand drift is a standard pose-validation step (Ahmed et al., 2023).
 
 ---
 
@@ -62,7 +72,7 @@ Global conformational stability was assessed from the radius of gyration (Rg) an
 
 ### 3.1 SGK1 is the only dockable hub
 
-Among the five cross-species hub genes, SGK1 was the sole member with an experimentally resolved kinase domain (PDB 7PUE). The other four hubs would require modelled structures and were excluded from structure-based validation.
+Among the five cross-species hub genes, SGK1 was the sole member with an experimentally resolved kinase domain (PDB 7PUE; Halland et al., 2022). The other four hubs would require modelled structures and were excluded from structure-based validation.
 
 ### 3.2 Docking advances six TCM monomers
 
@@ -110,7 +120,7 @@ The binding mode is dominated by van der Waals and hydrophobic contacts, with es
 
 The ranking among TCM monomers should be read with care. Resveratrol and tanshinone IIA combine a favourable ΔG with the smallest standard deviations (±7.25 and ±4.53 kcal/mol, respectively) and the lowest ligand RMSD (resveratrol 0.39 nm), making them the most robust of the six. Luteolin has the most negative mean ΔG among the TCM monomers but the largest spread (±17.13), so its precise rank relative to resveratrol is not secure. Daidzein and naringenin are the weakest and most mobile.
 
-We are explicit about what this study is not. It is a purely computational validation with no experimental assay, no cellular or animal data, and no measurement of SGK1 inhibition. The receptor was rebuilt from 7PUE (missing intra-residue atoms added, native chain breaks preserved) rather than the raw crystal, and MM-PBSA used a single trajectory without entropy correction, so the ΔG values are qualitative and must not be converted into K~d~ or IC~50~. The backbone RMSD and radius of gyration of the full complex are not reported as stability metrics because the rebuilt four-chain receptor produces a systematic alignment artifact (the separated chains drift apart during the run, inflating Rg by tens of percent); stability is judged solely from the ligand–protein minimal distance. Finally, the upstream bioinformatics that nominated SGK1 was itself limited by pseudoreplication and an absent human epigenomic signal, so SGK1 remains a hypothesis to be tested experimentally, not a demonstrated cause of PND.
+We are explicit about what this study is not. It is a purely computational validation with no experimental assay, no cellular or animal data, and no measurement of SGK1 inhibition. The receptor was rebuilt from 7PUE (missing intra-residue atoms added, native chain breaks preserved) rather than the raw crystal, and MM-PBSA used a single trajectory without entropy correction, so the ΔG values are qualitative and must not be converted into K~d~ or IC~50~ (Genheden and Ryde, 2015). The backbone RMSD and radius of gyration of the full complex are not reported as stability metrics because the rebuilt four-chain receptor produces a systematic alignment artifact (the separated chains drift apart during the run, inflating Rg by tens of percent); stability is judged solely from the ligand–protein minimal distance (Ahmed et al., 2023). Finally, the upstream bioinformatics that nominated SGK1 was itself limited by pseudoreplication and an absent human epigenomic signal, so SGK1 remains a hypothesis to be tested experimentally, not a demonstrated cause of PND. The positive-control GSK650394, a bona fide SGK1 inhibitor (Sherk et al., 2008), provides external calibration that the docking/MD/MM-PBSA chain recovers a known binder.
 
 ---
 
@@ -122,7 +132,7 @@ SGK1/7PUE is a tractable computational target for PND, and six TCM monomers, led
 
 ## Declarations
 
-**Data availability.** The docking and MD input files, trajectories metadata, and analysis scripts are deposited in a version-controlled repository (https://github.com/yyx-4113/pnd-sgk1-tcm-md, tag v1.0.0) with a MANIFEST checksum; per project convention, no "available on request". The MM-PBSA and trajectory outputs (T_md_final_7_2026-10-02.csv, T_mmpbsa_summary.csv, per-system xvg files) are included.
+**Data availability.** The docking and MD input files, trajectories metadata, and analysis scripts are deposited in a version-controlled repository (https://github.com/yyx-4113/pnd-sgk1-tcm-md, tag v1.0.1) with a MANIFEST checksum; per project convention, no "available on request". The MM-PBSA and trajectory outputs (T_md_final_7_2026-10-02.csv, T_mmpbsa_summary.csv, per-system xvg files) are included.
 
 **Generative AI disclosure.** A large-language model was used for writing assistance and language polishing. The computational design, data analysis, and all numerical results were produced by the author. No AI tool performed the simulations or generated the reported values.
 
@@ -136,24 +146,64 @@ SGK1/7PUE is a tractable computational target for PND, and six TCM monomers, led
 
 ## References
 
-1. Evered LA, Silbert BS. Postoperative cognitive dysfunction and noncardiac surgery. *Anesth Analg*. 2018;127(2):496–505. doi:10.1213/ANE.0000000000003514
-2. Berger M, Nadler JW, Browndyke JN, et al. Postoperative cognitive dysfunction: minding the gaps in our knowledge of a common postoperative complication in the elderly. *Anesth Clin*. 2015;33(3):517–550. doi:10.1016/j.anclin.2015.05.008
-3. Cibelli M, Fidalgo AR, Terrando N, et al. Role of interleukin-1β in postoperative cognitive dysfunction. *Ann Neurol*. 2010;68(3):360–368. doi:10.1002/ana.22082
-4. Yang Y. Cross-species integration and machine-learning target locking for perioperative neurocognitive disorders [internal pipeline report, D-stage]. 2026. [internal]
-5. RCSB Protein Data Bank. SGK1 kinase domain in complex with inhibitor, PDB 7PUE. https://www.rcsb.org/structure/7PUE
-6. Lang F, Strutz-Seebohm N, Seebohm G, Lang UE. Significance of SGK1 in the regulation of neuronal function. *J Physiol*. 2010;588(Pt 18):3349–3354. doi:10.1113/jphysiol.2010.190926
-7. Kim JJ, Diamond DM. The stressed hippocampus, synaptic plasticity and lost memories. *Nat Rev Neurosci*. 2002;3(6):453–462. doi:10.1038/nrn849
-8. Liu J, et al. Resveratrol attenuates postoperative cognitive dysfunction via hippocampal anti-inflammatory and antioxidant pathways. *Neurosci Lett*. 2025; doi:10.1016/j.neulet.2024.138089
-9. Chu JMT, Abulimiti A, Wong BSH, et al. *Sigesbeckia orientalis* L.-derived active fraction ameliorates perioperative neurocognitive disorders through alleviating hippocampal neuroinflammation. *Front Pharmacol*. 2022;13:846631. doi:10.3389/fphar.2022.846631
-10. Ru J, Li P, Wang J, et al. TCMSP: a database of systems pharmacology for drug discovery from herbal medicines. *J Cheminform*. 2014;6:13. doi:10.1186/1758-2946-6-13
-11. Fang S, Dong L, Liu L, et al. HERB: a high-throughput experiment- and reference-guided database of traditional Chinese medicine. *Nucleic Acids Res*. 2021;49(D1):D1197–D1206. doi:10.1093/nar/gkaa1063
-12. Trott O, Olson AJ. AutoDock Vina: improving the speed and accuracy of docking with a new scoring function. *J Comput Chem*. 2010;31(2):455–461. doi:10.1002/jcc.21334
-13. Sherk AB, Frigo DE, Schnackenberg CG, et al. Development of a small-molecule serum- and glucocorticoid-regulated kinase-1 antagonist and its evaluation as a prostate cancer therapeutic. *Cancer Res*. 2008;68(18):7475–7483. doi:10.1158/0008-5472.CAN-08-1047
-14. Abraham MJ, Murtola T, Schulz R, et al. GROMACS: high performance molecular simulations through multi-level parallelism from laptops to supercomputers. *SoftwareX*. 2015;1–2:19–25. doi:10.1016/j.softx.2015.06.001
-15. Valdés-Tresanco MS, Valdés-Tresanco ME, Valiente PA, Moreno E. gmx_MMPBSA: a new tool to perform end-state free energy calculations with GROMACS. *J Chem Theory Comput*. 2021;17(10):6281–6291. doi:10.1021/acs.jctc.1c00645
-16. McGibbon RT, Beauchamp KA, Harrigan MP, et al. MDTraj: a modern open library for the analysis of molecular dynamics trajectories. *Biophys J*. 2015;109(8):1528–1532. doi:10.1016/j.bpj.2015.08.015
-17. Daina A, Zoete V. A BOILED-egg to predict gastrointestinal absorption and brain penetration of small molecules. *ChemMedChem*. 2016;11(5):411–417. doi:10.1002/cmdc.201500534
+Abraham, M.J., Murtola, T., Schulz, R., Páll, S., Smith, J.C., Hess, B., Lindahl, E., 2015. GROMACS: high performance molecular simulations through multi-level parallelism from laptops to supercomputers. SoftwareX 1–2, 19–25. https://doi.org/10.1016/j.softx.2015.06.001
 
----
+Ahmed, M., Maldonado, A.M., Durrant, J.D., 2023. From byte to bench to bedside: molecular dynamics simulations and drug discovery. BMC Biol 21, 299. https://doi.org/10.1186/s12915-023-01791-z
 
-*Notes for final submission pass (updated 2026-10-02): (i) all 17 references carry verified DOIs in Vancouver order; refs 1–3, 6–9 were corrected to the actually-cited papers (the prior draft mis-stated Evered & Silbert as Can J Anaesth 2018 and listed an unverifiable Crosby/Qin placeholder). (ii) MD parameters and force field confirmed from run_md.sh and md.log (GROMACS 2026.3, amber99sb-ildn, TIP3P water, dt 2 fs, NVT 50,000 / NPT 500,000 steps, V-rescale → Berendsen → Parrinello–Rahman), and the ADME pre-filter corrected to the BOILED-egg model actually used in D5 (TCMSP/HERB OB≥30%/DL≥0.18 were not applied). (iii) data-availability placeholder replaced with the assigned repository URL/tag (https://github.com/yyx-4113/pnd-sgk1-tcm-md, tag v1.0.0) — repository and MANIFEST checksum created, tag v1.0.0 pushed 2026-10-02. (iv) journal-specific formatting (word count, abstract structure, reference style) to be applied after the target journal is chosen. (v) IMPORTANT CORRECTION during the integrity audit: the originally claimed "Rg drift ≤ 0.035%" (Abstract, Methods 2.6, Results 3.3, Discussion) is NOT supported by the deposited trajectory data — the rebuilt four-chain receptor makes Rg (and full-complex backbone RMSD) spurious (per-system Rg swings 1.9–4.9 nm, i.e. tens of percent, because the separated chains drift apart). Rg has been removed as a stability metric and the stability conclusion now rests solely on the ligand–protein minimal distance (0.14–0.31 nm for all 7 systems, a valid, deposited signal). Table 1 "Rg drift" was replaced by "Ligand RMSD (independent fit)". All Rg/backbone-RMSD artifacts are disclosed alongside the receptor-rebuild accident. Caveat: re-confirm the pagination of refs 3 (Cibelli, Ann Neurol 2010;68:360–368) and 8 (Liu, Neurosci Lett 2025) against PubMed prior to submission.*
+Berger, M., Nadler, J.W., Browndyke, J.N., et al., 2015. Postoperative cognitive dysfunction: minding the gaps in our knowledge of a common postoperative complication in the elderly. Anesth Clin 33, 517–550. https://doi.org/10.1016/j.anclin.2015.05.008
+
+Chu, J.M.T., Abulimiti, A., Wong, B.S.H., et al., 2022. *Sigesbeckia orientalis* L.-derived active fraction ameliorates perioperative neurocognitive disorders through alleviating hippocampal neuroinflammation. Front Pharmacol 13, 846631. https://doi.org/10.3389/fphar.2022.846631
+
+Cibelli, M., Fidalgo, A.R., Terrando, N., et al., 2010. Role of interleukin-1β in postoperative cognitive dysfunction. Ann Neurol 68, 360–368. https://doi.org/10.1002/ana.22082
+
+Daina, A., Zoete, V., 2016. A BOILED-egg to predict gastrointestinal absorption and brain penetration of small molecules. ChemMedChem 11, 411–417. https://doi.org/10.1002/cmdc.201500534
+
+Egan, W.J., Merz, K.M., Baldwin, J.J., 2000. Prediction of drug absorption using multivariate statistics. J Med Chem 43, 3867–3877. https://doi.org/10.1021/jm000292e
+
+Evered, L.A., Silbert, B.S., 2018. Postoperative cognitive dysfunction and noncardiac surgery. Anesth Analg 127, 496–505. https://doi.org/10.1213/ANE.0000000000003514
+
+Fang, S., Dong, L., Liu, L., et al., 2021. HERB: a high-throughput experiment- and reference-guided database of traditional Chinese medicine. Nucleic Acids Res 49, D1197–D1206. https://doi.org/10.1093/nar/gkaa1063
+
+Genheden, S., Ryde, U., 2015. The MM/PBSA and MM/GBSA methods to estimate ligand-binding affinities. Expert Opin Drug Discov 10, 449–461. https://doi.org/10.1517/17460441.2015.1032936
+
+Halland, N., Schmidt, F., Weiss, T., Li, Z., Czech, J., Saas, J., Ding-Pfennigdorff, D., Dreyer, M.K., Strubing, C., Nazare, M., 2022. Rational design of highly potent, selective, and bioavailable SGK1 protein kinase inhibitors for the treatment of osteoarthritis. J Med Chem 65, 1567–1584. https://doi.org/10.1021/acs.jmedchem.1c01601
+
+Kim, J.J., Diamond, D.M., 2002. The stressed hippocampus, synaptic plasticity and lost memories. Nat Rev Neurosci 3, 453–462. https://doi.org/10.1038/nrn849
+
+Lang, F., Strutz-Seebohm, N., Seebohm, G., Lang, U.E., 2010. Significance of SGK1 in the regulation of neuronal function. J Physiol 588, 3349–3354. https://doi.org/10.1113/jphysiol.2010.190926
+
+Langfelder, P., Horvath, S., 2008. WGCNA: an R package for weighted correlation network analysis. BMC Bioinformatics 9, 559. https://doi.org/10.1186/1471-2105-9-559
+
+Li, L., Pan, G., Fan, R., Li, D., Guo, L., Ma, L., Liang, H., Qiu, J., 2022. Luteolin alleviates inflammation and autophagy of hippocampus induced by cerebral ischemia/reperfusion by activating PPAR gamma in rats. BMC Complement Med Ther 22, 176. https://doi.org/10.1186/s12906-022-03652-8
+
+Lipinski, C.A., Lombardo, F., Dominy, B.W., Feeney, P.J., 1997. Experimental and computational approaches to estimate solubility and permeability in drug discovery and development settings. Adv Drug Deliv Rev 23, 3–25. https://doi.org/10.1016/S0169-409X(96)00423-1
+
+Liu, J., et al., 2025. Resveratrol attenuates postoperative cognitive dysfunction via hippocampal anti-inflammatory and antioxidant pathways. Neurosci Lett. https://doi.org/10.1016/j.neulet.2024.138089
+
+Mao, L., Wang, L., Huang, Z., Switzer, J.A., Hess, D.C., Zhang, Q., 2025. Perioperative neurocognitive disorders: advances in molecular mechanisms and bioactive molecules. Ageing Res Rev 102, 102885. https://doi.org/10.1016/j.arr.2025.102885
+
+McGibbon, R.T., Beauchamp, K.A., Harrigan, M.P., et al., 2015. MDTraj: a modern open library for the analysis of molecular dynamics trajectories. Biophys J 109, 1528–1532. https://doi.org/10.1016/j.bpj.2015.08.015
+
+Ru, J., Li, P., Wang, J., et al., 2014. TCMSP: a database of systems pharmacology for drug discovery from herbal medicines. J Cheminform 6, 13. https://doi.org/10.1186/1758-2946-6-13
+
+Safavynia, S.A., Goldstein, P.A., 2018. The role of neuroinflammation in postoperative cognitive dysfunction: moving from hypothesis to treatment. Front Psychiatry 9, 752. https://doi.org/10.3389/fpsyt.2018.00752
+
+Sherk, A.B., Frigo, D.E., Schnackenberg, C.G., et al., 2008. Development of a small-molecule serum- and glucocorticoid-regulated kinase-1 antagonist and its evaluation as a prostate cancer therapeutic. Cancer Res 68, 7475–7483. https://doi.org/10.1158/0008-5472.CAN-08-1047
+
+Trott, O., Olson, A.J., 2010. AutoDock Vina: improving the speed and accuracy of docking with a new scoring function. J Comput Chem 31, 455–461. https://doi.org/10.1002/jcc.21334
+
+Valdés-Tresanco, M.S., Valdés-Tresanco, M.E., Valiente, P.A., Moreno, E., 2021. gmx_MMPBSA: a new tool to perform end-state free energy calculations with GROMACS. J Chem Theory Comput 17, 6281–6291. https://doi.org/10.1021/acs.jctc.1c00645
+
+Veber, D.F., Johnson, S.R., Cheng, H.Y., Smith, B.R., Ward, K.W., Kopple, K.D., 2002. Molecular properties that influence the oral bioavailability of drug candidates. J Med Chem 45, 2615–2623. https://doi.org/10.1021/jm020017n
+
+Wang, J., Mao, J., Wang, R., Li, S., Wu, B., Yuan, Y., 2020. Kaempferol protects against cerebral ischemia reperfusion injury through intervening oxidative and inflammatory stress induced apoptosis. Front Pharmacol 11, 424. https://doi.org/10.3389/fphar.2020.00424
+
+Yang, Y., 2026. Cross-species integration and machine-learning target locking for perioperative neurocognitive disorders. Internal pipeline report, Stage D. [internal report]
+
+Yang, Y., Wang, B., Jiang, Y., Fu, W., 2025. Tanshinone IIA mitigates postoperative cognitive dysfunction in aged rats by inhibiting hippocampal inflammation and ferroptosis. NeuroToxicology. https://doi.org/10.1016/j.neuro.2025.02.003
+
+Zhang, J., Zhang, Y., Liu, Y., Niu, X., 2022. Naringenin attenuates cognitive impairment in a rat model of vascular dementia by inhibiting hippocampal oxidative stress and inflammatory response. Neurochem Res 47, 3402–3413. https://doi.org/10.1007/s11064-022-03696-9
+
+Zhao, B., Lehr, R., Smallwood, A.M., Ho, T.F., Maley, K., Randall, T., Head, M.S., Koretke, K.K., Schnackenberg, C.G., 2007. Crystal structure of the kinase domain of serum and glucocorticoid-regulated kinase 1 in complex with AMP PNP. Protein Sci 16, 2761–2769. https://doi.org/10.1110/ps.073161707
+
+Zheng, M., Zhou, M., Chen, M., Lu, Y., Shi, D., Wang, J., Liu, C., 2022. Neuroprotective effect of daidzein extracted from Pueraria lobate Radix in a stroke model via the Akt/mTOR/BDNF channel. Front Pharmacol. https://doi.org/10.3389/fphar.2021.772485
