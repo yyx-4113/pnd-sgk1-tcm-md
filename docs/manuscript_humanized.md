@@ -178,7 +178,7 @@ Li, L., Pan, G., Fan, R., Li, D., Guo, L., Ma, L., Liang, H., Qiu, J., 2022. Lut
 
 Lipinski, C.A., Lombardo, F., Dominy, B.W., Feeney, P.J., 1997. Experimental and computational approaches to estimate solubility and permeability in drug discovery and development settings. Adv Drug Deliv Rev 23, 3–25. https://doi.org/10.1016/S0169-409X(96)00423-1
 
-Liu, J., et al., 2025. Resveratrol attenuates postoperative cognitive dysfunction via hippocampal anti-inflammatory and antioxidant pathways. Neurosci Lett. https://doi.org/10.1016/j.neulet.2024.138089
+Liu, J., et al., 2025. Resveratrol ameliorates postoperative cognitive dysfunction in aged mice by regulating microglial polarization through CX3CL1/CX3CR1 signaling axis. Neurosci Lett 847, 138089. https://doi.org/10.1016/j.neulet.2024.138089
 
 Mao, L., Wang, L., Huang, Z., Switzer, J.A., Hess, D.C., Zhang, Q., 2025. Perioperative neurocognitive disorders: advances in molecular mechanisms and bioactive molecules. Ageing Res Rev 102, 102885. https://doi.org/10.1016/j.arr.2025.102885
 
@@ -200,10 +200,10 @@ Wang, J., Mao, J., Wang, R., Li, S., Wu, B., Yuan, Y., 2020. Kaempferol protects
 
 Yang, Y., 2026. Cross-species integration and machine-learning target locking for perioperative neurocognitive disorders. Internal pipeline report, Stage D. [internal report]
 
-Yang, Y., Wang, B., Jiang, Y., Fu, W., 2025. Tanshinone IIA mitigates postoperative cognitive dysfunction in aged rats by inhibiting hippocampal inflammation and ferroptosis. NeuroToxicology. https://doi.org/10.1016/j.neuro.2025.02.003
+Yang, Y., Wang, B., Jiang, Y., Fu, W., 2025. Tanshinone IIA mitigates postoperative cognitive dysfunction in aged rats by inhibiting hippocampal inflammation and ferroptosis. NeuroToxicology 107, 62–73. https://doi.org/10.1016/j.neuro.2025.02.003
 
 Zhang, J., Zhang, Y., Liu, Y., Niu, X., 2022. Naringenin attenuates cognitive impairment in a rat model of vascular dementia by inhibiting hippocampal oxidative stress and inflammatory response. Neurochem Res 47, 3402–3413. https://doi.org/10.1007/s11064-022-03696-9
 
 Zhao, B., Lehr, R., Smallwood, A.M., Ho, T.F., Maley, K., Randall, T., Head, M.S., Koretke, K.K., Schnackenberg, C.G., 2007. Crystal structure of the kinase domain of serum and glucocorticoid-regulated kinase 1 in complex with AMP PNP. Protein Sci 16, 2761–2769. https://doi.org/10.1110/ps.073161707
 
-Zheng, M., Zhou, M., Chen, M., Lu, Y., Shi, D., Wang, J., Liu, C., 2022. Neuroprotective effect of daidzein extracted from Pueraria lobate Radix in a stroke model via the Akt/mTOR/BDNF channel. Front Pharmacol. https://doi.org/10.3389/fphar.2021.772485
+Zheng, M., Zhou, M., Chen, M., Lu, Y., Shi, D., Wang, J., Liu, C., 2022. Neuroprotective effect of daidzein extracted from Pueraria lobate Radix in a stroke model via the Akt/mTOR/BDNF channel. Front Pharmacol 12, 772485. https://doi.org/10.3389/fphar.2021.772485
