@@ -42,7 +42,7 @@ I, the sole author, confirm the following before submission:
 6. **Generative-AI disclosure is accurate.** An LLM assisted with writing/language polishing only.
    Computational design, simulations, and all reported values were produced by the author.
 
-The repository MANIFEST provides sha256 checksums for every deposited file; the tag is **v1.1.1**.
+The repository MANIFEST provides sha256 checksums for every deposited file; the tag is **v1.1.2**.
 
 ---
 *Signed: Yongxin Yang, 2026-10-06.*

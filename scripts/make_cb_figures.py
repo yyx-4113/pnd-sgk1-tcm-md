@@ -2,7 +2,7 @@
 """Generate CBC submission figures from DEPOSITED data only (no re-simulation).
 Fig1: ligand-protein minimal heavy-atom distance vs time (stay-in-pocket) for 7 systems.
 Fig2: MM-PBSA dG (GB & PB) bar chart with population SD.
-All inputs are files already in the v1.1.0 deposit (lig_dist.xvg, T_md_final_7_2026-10-05.csv).
+All inputs are files already in the v1.1.2 deposit (lig_dist.xvg, T_md_final_7_2026-10-05.csv).
 """
 import os, csv, json
 import numpy as np

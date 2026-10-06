@@ -177,4 +177,4 @@ sha256sum -c MANIFEST      # GNU/Linux
 while read h p; do printf '%s  %s\n' "$h" "$p"; done < MANIFEST | sha256sum -c
 ```
 
-Tag: **v1.1.1**.
+Tag: **v1.1.2**.

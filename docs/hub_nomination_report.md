@@ -1,6 +1,6 @@
 # Stage D Hub-Nomination Report — Cross-species integration and machine-learning target locking for perioperative neurocognitive disorders (PND)
 
-**Author:** Yongxin Yang · **Deposited:** 2026-10-05 · **Repository:** https://github.com/yyx-4113/pnd-sgk1-tcm-md (tag v1.1.1)
+**Author:** Yongxin Yang · **Deposited:** 2026-10-05 · **Repository:** https://github.com/yyx-4113/pnd-sgk1-tcm-md (tag v1.1.2)
 
 This report accompanies the manuscript *"SGK1 as a computational candidate target for perioperative neurocognitive disorders: in silico traditional Chinese medicine screening and 100 ns molecular dynamics pose-retention assessment"* and provides the upstream, target-nomination evidence that motivates SGK1 as the lead candidate. It is cited in the manuscript as Yang (2026).
 
