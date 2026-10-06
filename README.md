@@ -1,6 +1,6 @@
 # pnd-sgk1-tcm-md
 
-**SGK1 as a computational target for perioperative neurocognitive disorders: in silico TCM screening and 100 ns molecular dynamics validation — reproducibility package**
+**SGK1 as a computational target for perioperative neurocognitive disorders: in silico TCM screening and 100 ns molecular dynamics pose-retention assessment — reproducibility package**
 
 This repository is the version-controlled data-and-code deposit cited in the accompanying manuscript
 (`docs/manuscript_humanized.md`). It contains the docking/MD *input files*, the *trajectory metadata*
@@ -177,4 +177,4 @@ sha256sum -c MANIFEST      # GNU/Linux
 while read h p; do printf '%s  %s\n' "$h" "$p"; done < MANIFEST | sha256sum -c
 ```
 
-Tag: **v1.0.0**.
+Tag: **v1.1.1**.

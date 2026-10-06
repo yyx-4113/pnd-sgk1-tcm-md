@@ -60,7 +60,7 @@ git push origin main --tags
 ## 5. 稿件数据可用性声明回填核对
 稿件 `docs/manuscript_humanized.md` 与 `docs/cover_letter.md` 已写入：
 - 仓库 URL：`https://github.com/yyx-4113/pnd-sgk1-tcm-md`
-- tag：`v1.0.0`
+- tag：`v1.1.1`
 
 推送成功后，该声明即成立。若日后补推原始 `.xtc` 大轨迹（如走 Zenodo 归档），须在稿件补充说明归档 DOI，**不得**在尚未创建时提前声称存在。
 
