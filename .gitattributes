@@ -1,1 +1,14 @@
-* eol=lf
+# Line-ending policy --------------------------------------------------------
+# Text files are normalised to LF on checkout; binary files are never touched.
+# A bare "* eol=lf" (the previous content) wrongly treated binaries as text and
+# stripped 0x0d bytes from PNGs on checkout, corrupting docs/graphical_abstract.png.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.xtc binary
+*.trr binary
+*.tpr binary
+*.edr binary
